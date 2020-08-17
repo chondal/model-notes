@@ -1,0 +1,33 @@
+{
+    "name": "chondal/model-notes",
+    "description": "Crear notas en diferentes modelos.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jonathan",
+            "email": "jg.pradi@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Chondal\\ModelNotes\\": "src/"
+        },
+        "files": [
+            "src/model-notes.php"
+        ]
+    },
+    "require-dev": {
+        "orchestra/testbench": "^4.6"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Chondal\\ModelNotes\\ModelNotesServiceProvider"
+            ],
+            "aliases": {
+                "ModelNotes": "Chondal\\ModelNotes\\Facades\\ModelNotes"
+            }
+        }
+    }
+}
