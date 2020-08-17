@@ -16,7 +16,7 @@
                     </div>
                     <div class="body">
                         <p>
-                            {{ $item->body }}
+                            {!! nl2br($item->body) !!}
                         </p>
 
                         @if ($item->author->id == Auth::user()->id)
