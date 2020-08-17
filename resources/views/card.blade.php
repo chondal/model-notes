@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header">
-        Notas
+        + Notas
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary btn-sm float-right" data-toggle="modal" data-target="#modalNote">
           Agregar Nota
