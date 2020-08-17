@@ -39,6 +39,11 @@ donde $model, es la instancia actual del modelo que desea ver.
 
 Esto listará las notas y ofrecerá un modal para poder agregar notas al modelo, puede publicar las vistas para poder modificarlas a su gusto.
 
+## Capturas
+
+![alt text](https://res.cloudinary.com/dchaozfok/image/upload/v1597698708/imhr9vtnikwkmtmbxtsd.png)
+![alt text](https://res.cloudinary.com/dchaozfok/image/upload/v1597698708/i1xfqgmgknh6gxaw4qxc.png)
+
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
