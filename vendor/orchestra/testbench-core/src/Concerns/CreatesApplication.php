@@ -5,7 +5,6 @@ namespace Orchestra\Testbench\Concerns;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Facade;
-use PHPUnit\Framework\TestCase;
 
 trait CreatesApplication
 {
@@ -306,17 +305,12 @@ trait CreatesApplication
         $app->make('Illuminate\Foundation\Bootstrap\SetRequestForConsole')->bootstrap($app);
         $app->make('Illuminate\Foundation\Bootstrap\RegisterProviders')->bootstrap($app);
 
-        if ($this instanceof TestCase) {
-            Collection::make($this->getAnnotations())->each(function ($location) use ($app) {
-                Collection::make($location['environment-setup'] ?? [])
-                    ->filter(function ($method) {
-                        return ! \is_null($method) && \method_exists($this, $method);
-                    })->each(function ($method) use ($app) {
-                        $this->{$method}($app);
-                    });
-            });
+        if (\method_exists($this, 'parseTestMethodAnnotations')) {
+            $this->parseTestMethodAnnotations($app, 'environment-setup');
+            $this->parseTestMethodAnnotations($app, 'define-env');
         }
 
+        $this->defineEnvironment($app);
         $this->getEnvironmentSetUp($app);
 
         $app->make('Illuminate\Foundation\Bootstrap\BootProviders')->bootstrap($app);
@@ -326,8 +320,6 @@ trait CreatesApplication
         }
 
         $app->make('Illuminate\Contracts\Console\Kernel')->bootstrap();
-
-        $app['router']->getRoutes()->refreshNameLookups();
 
         $app->resolving('url', static function ($url, $app) {
             $app['router']->getRoutes()->refreshNameLookups();
@@ -349,9 +341,32 @@ trait CreatesApplication
     /**
      * Define environment setup.
      *
-     * @param  \Illuminate\Foundation\Application   $app
+     * @param  \Illuminate\Foundation\Application  $app
      *
      * @return void
      */
-    abstract protected function getEnvironmentSetUp($app);
+    protected function defineEnvironment($app)
+    {
+        // Define environment.
+    }
+
+    /**
+     * Define environment setup.
+     *
+     * @param  \Illuminate\Foundation\Application  $app
+     *
+     * @return void
+     */
+    protected function getEnvironmentSetUp($app)
+    {
+        // Define your environment setup.
+    }
+
+    /**
+     * Parse test method annotations.
+     *
+     * @param  \Illuminate\Foundation\Application  $app
+     * @param  string  $name
+     */
+    abstract protected function parseTestMethodAnnotations($app, string $name): void;
 }

@@ -10,7 +10,7 @@
 namespace SebastianBergmann\CodeCoverage\StaticAnalysis;
 
 use function implode;
-use function str_replace;
+use function rtrim;
 use function trim;
 use PhpParser\Node;
 use PhpParser\Node\Identifier;
@@ -26,6 +26,9 @@ use PhpParser\NodeTraverser;
 use PhpParser\NodeVisitorAbstract;
 use SebastianBergmann\Complexity\CyclomaticComplexityCalculatingVisitor;
 
+/**
+ * @internal This class is not covered by the backward compatibility promise for phpunit/php-code-coverage
+ */
 final class CodeUnitFindingVisitor extends NodeVisitorAbstract
 {
     /**
@@ -285,13 +288,6 @@ final class CodeUnitFindingVisitor extends NodeVisitorAbstract
 
     private function namespace(string $namespacedName, string $name): string
     {
-        return trim(
-            str_replace(
-                $name,
-                '',
-                $namespacedName
-            ),
-            '\\'
-        );
+        return trim(rtrim($namespacedName, $name), '\\');
     }
 }

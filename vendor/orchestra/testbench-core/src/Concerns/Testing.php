@@ -18,6 +18,9 @@ use Throwable;
 trait Testing
 {
     use CreatesApplication,
+        HandlesAnnotations,
+        HandlesDatabases,
+        HandlesRoutes,
         WithFactories,
         WithLaravelMigrations,
         WithLoadMigrationsFrom;
@@ -75,6 +78,8 @@ trait Testing
         }
 
         Model::setEventDispatcher($this->app['events']);
+
+        $this->setUpApplicationRoutes();
 
         $this->setUpHasRun = true;
     }
@@ -137,13 +142,15 @@ trait Testing
      */
     final protected function setUpTheTestEnvironmentTraits(array $uses): array
     {
-        if (isset($uses[RefreshDatabase::class])) {
-            $this->refreshDatabase();
-        }
+        $this->setUpDatabaseRequirements(function () use ($uses) {
+            if (isset($uses[RefreshDatabase::class])) {
+                $this->refreshDatabase();
+            }
 
-        if (isset($uses[DatabaseMigrations::class])) {
-            $this->runDatabaseMigrations();
-        }
+            if (isset($uses[DatabaseMigrations::class])) {
+                $this->runDatabaseMigrations();
+            }
+        });
 
         if (isset($uses[DatabaseTransactions::class])) {
             $this->beginDatabaseTransaction();

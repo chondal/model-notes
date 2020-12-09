@@ -36,6 +36,7 @@ final class Help
 
         'Code Coverage Options' => [
             ['arg' => '--coverage-clover <file>', 'desc' => 'Generate code coverage report in Clover XML format'],
+            ['arg' => '--coverage-cobertura <file>', 'desc' => 'Generate code coverage report in Cobertura XML format'],
             ['arg' => '--coverage-crap4j <file>', 'desc' => 'Generate code coverage report in Crap4J XML format'],
             ['arg' => '--coverage-html <dir>', 'desc' => 'Generate code coverage report in HTML format'],
             ['arg' => '--coverage-php <file>', 'desc' => 'Export PHP_CodeCoverage object to file'],
@@ -56,17 +57,20 @@ final class Help
             ['arg' => '--testdox-text <file>', 'desc' => 'Write agile documentation in Text format to file'],
             ['arg' => '--testdox-xml <file>', 'desc' => 'Write agile documentation in XML format to file'],
             ['arg' => '--reverse-list', 'desc' => 'Print defects in reverse order'],
+            ['arg' => '--no-logging', 'desc' => 'Ignore logging configuration'],
         ],
 
         'Test Selection Options' => [
-            ['arg' => '--filter <pattern>', 'desc' => 'Filter which tests to run'],
+            ['arg' => '--list-suites', 'desc' => 'List available test suites'],
             ['arg' => '--testsuite <name>', 'desc' => 'Filter which testsuite to run'],
+            ['arg' => '--list-groups', 'desc' => 'List available test groups'],
             ['arg' => '--group <name>', 'desc' => 'Only runs tests from the specified group(s)'],
             ['arg' => '--exclude-group <name>', 'desc' => 'Exclude tests from the specified group(s)'],
-            ['arg' => '--list-groups', 'desc' => 'List available test groups'],
-            ['arg' => '--list-suites', 'desc' => 'List available test suites'],
+            ['arg' => '--covers <name>', 'desc' => 'Only runs tests annotated with "@covers <name>"'],
+            ['arg' => '--uses <name>', 'desc' => 'Only runs tests annotated with "@uses <name>"'],
             ['arg' => '--list-tests', 'desc' => 'List available tests'],
             ['arg' => '--list-tests-xml <file>', 'desc' => 'List available tests in XML format'],
+            ['arg' => '--filter <pattern>', 'desc' => 'Filter which tests to run'],
             ['arg' => '--test-suffix <suffixes>', 'desc' => 'Only search for test in files with specified suffix(es). Default: Test.php,.phpt'],
         ],
 
@@ -125,7 +129,6 @@ final class Help
             ['arg' => '--bootstrap <file>', 'desc' => 'A PHP script that is included before the tests run'],
             ['arg' => '-c|--configuration <file>', 'desc' => 'Read configuration from XML file'],
             ['arg' => '--no-configuration', 'desc' => 'Ignore default configuration file (phpunit.xml)'],
-            ['arg' => '--no-logging', 'desc' => 'Ignore logging configuration'],
             ['arg' => '--extensions <extensions>', 'desc' => 'A comma separated list of PHPUnit extensions to load'],
             ['arg' => '--no-extensions', 'desc' => 'Do not load PHPUnit extensions'],
             ['arg' => '--include-path <path(s)>', 'desc' => 'Prepend PHP\'s include_path with given path(s)'],
