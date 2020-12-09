@@ -2,8 +2,6 @@
 
 namespace Chondal\ModelNotes;
 
-use Illuminate\Support\HtmlString;
-
 class ModelNotes
 {
     public function card($model = null)
@@ -18,15 +16,15 @@ class ModelNotes
         ]);
     }
 
-    public function logoutForm()
-    {
-        return new HtmlString(view('ModelNotes::logout'));
-    }
+    // public function logoutForm()
+    // {
+    //     return new HtmlString(view('ModelNotes::logout'));
+    // }
 
-    public function loginForm($user)
-    {
-        return new HtmlString(view('ModelNotes::login', compact(
-            'user'
-        )));
-    }
+    // public function loginForm($user)
+    // {
+    //     return new HtmlString(view('ModelNotes::login', compact(
+    //         'user'
+    //     )));
+    // }
 }

@@ -9,6 +9,6 @@ class ModelNotes extends Facade
 
     protected static function getFacadeAccessor()
     {
-        return 'model-notes';
+        return 'ModelNotes';
     }
 }

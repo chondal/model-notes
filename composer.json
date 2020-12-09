@@ -14,7 +14,7 @@
             "Chondal\\ModelNotes\\": "src/"
         },
         "files": [
-            "src/model-notes.php"
+            "src/helpers.php"
         ]
     },
     "require-dev": {

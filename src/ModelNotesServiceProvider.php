@@ -27,8 +27,8 @@ class ModelNotesServiceProvider extends ServiceProvider
 
     public function register()
     {
-        $this->app->bind('model-notes', function () {
-            return new ModelNotes;
+        $this->app->bind('ModelNotes', function () {
+            return new \Chondal\ModelNotes\ModelNotes;
         });
 
         $this->mergeConfigFrom(__DIR__ . '/../config/notes.php', 'notes');

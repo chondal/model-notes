@@ -23,5 +23,5 @@ return array(
     'f0906e6318348a765ffb6eb24e0d0938' => $vendorDir . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
     '58571171fd5812e6e447dce228f52f4d' => $vendorDir . '/laravel/framework/src/Illuminate/Support/helpers.php',
     '6124b4c8570aa390c21fafd04a26c69f' => $vendorDir . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
-    'e9de17147a23df788a648494e04937f1' => $baseDir . '/src/model-notes.php',
+    '998dc40d44440a7ebe44c5cd43d3d898' => $baseDir . '/src/helpers.php',
 );
