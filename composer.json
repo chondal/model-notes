@@ -12,10 +12,7 @@
     "autoload": {
         "psr-4": {
             "Chondal\\ModelNotes\\": "src/"
-        },
-        "files": [
-            "src/helpers.php"
-        ]
+        }
     },
     "require-dev": {
         "orchestra/testbench": "^4.6"
